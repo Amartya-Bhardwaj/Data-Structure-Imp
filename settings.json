@@ -1,0 +1,11 @@
+{
+    "files.associations": {
+        "ostream": "cpp",
+        "cmath": "c",
+        "iostream": "cpp",
+        "stdio.h": "c"
+    },
+    "C_Cpp.errorSquiggles": "Enabled",
+    "debug.showSubSessionsInToolBar": true,
+    "task.problemMatchers.neverPrompt": true
+}
