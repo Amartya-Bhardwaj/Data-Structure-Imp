@@ -2,6 +2,8 @@
 #include<stack>
 using namespace std;
 
+int count =0;
+
 void DFS(int A[8][8], int u , int n){
     static int visited[8] = {0};
     if(visited[u] == 0){
@@ -10,6 +12,7 @@ void DFS(int A[8][8], int u , int n){
         for(int v =1; v<n; v++){
             if(A[u][v]==1&& visited[v] == 0){
                 DFS(A,v,n);
+                count ++;
             }
         }
     }
@@ -49,6 +52,6 @@ int main(){
                    {0, 0, 0, 0, 0, 1, 0, 0}};
     DFS(A,1,8);
     cout<<endl;
-    StDFS(A,2,8);
+    cout<<count;
     return 0;
 }
