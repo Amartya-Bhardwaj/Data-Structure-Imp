@@ -2,6 +2,12 @@
 
 // It tooks order of nlogn to insert n elements.
 
+void swap(int a, int b){
+    int temp = a;
+    b = a;
+    b = temp;
+}
+
 void insert(int A[], int n){
     int temp = A[n];
     int i = 0;
@@ -10,6 +16,27 @@ void insert(int A[], int n){
         i = i/2;
     }
     temp = A[i];
+}
+
+void Delete(int A[], int n){
+    int i,j;
+    i = 1;
+    j = 2*i;
+    int x = A[n];
+    A[1] = A[n];
+    while(j < n-1){
+        if(A[j+1] > A[j]){
+            j = j+1;
+        }
+        if(A[i] < A[j]){
+            swap(A[i],A[j]);
+            i = j;
+            j = j*2;
+        }
+        else{
+            break;
+        }
+    }
 }
 
 int main(){

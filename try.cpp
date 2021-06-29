@@ -1,38 +1,30 @@
 #include<iostream>
 #include<stdlib.h>
-#include<vector>
 using namespace std;
 
+
+
 int main(){
-	int k;
-	long double x,t;
-	unsigned long int n;
-	cin>>k;
-	for(int i=0;i<k;i++){
-		long double temp = 0;
-		long double count = 0;
-		vector<long double> A;
-        vector<long double> B;
-        A.resize(n);
-        B.resize(n);
-		cin>>n>>x>>t;
-		A.at(0) = 0;
-		B.at(0) = t;
-		temp = x;
-		for(long int j=1; j<n;j++){
-			t = t + x;
-			B.at(j) = t;
-			A.at(j) = temp;
-			temp = temp + x;
+	int t,n;
+	int *A,*B;
+	cin>>t;
+	for(int i=0;i<t;i++){
+		cin>>n;
+		A = new int[n];
+		B = new int[n];
+		for(int j=0;j<n;j++){
+			A[j] = j+1;
+			B[j] = 0;
 		}
-		for(long int j=0; j<n; j++){
-			for(long int f=j+1; f<=n; f++){
-				if(B.at(j)>=A.at(f)){
-					count = count + 1;
-				}
-			}
+		int x = A[n-1];
+		for(int j=0;j<n-1;j++){
+			B[j+1] = A[j];
 		}
-		cout<<count<<endl;
+		B[0] = x;
+		for(int j=0;j<n;j++){
+			cout<<B[j]<<" ";
+		}
+		cout<<endl;
 	}
 	return 0;
 }
