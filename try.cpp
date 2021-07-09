@@ -1,30 +1,71 @@
 #include<iostream>
 #include<stdlib.h>
+#include<algorithm>
 using namespace std;
 
-
+int gcd(int a, int b)
+{
+    if (a == 0)
+       return b;
+    if (b == 0)
+       return a;
+    if (a == b)
+        return a;
+  
+    if (a > b)
+        return gcd(a-b, b);
+    return gcd(a, b-a);
+}
 
 int main(){
-	int t,n;
-	int *A,*B;
+	int t,a,b;
 	cin>>t;
-	for(int i=0;i<t;i++){
-		cin>>n;
-		A = new int[n];
-		B = new int[n];
-		for(int j=0;j<n;j++){
-			A[j] = j+1;
-			B[j] = 0;
+	for(int i=0; i<t; i++){
+		cin>>a>>b;
+		if(a == b){
+			cout<<"0 0"<<endl;
 		}
-		int x = A[n-1];
-		for(int j=0;j<n-1;j++){
-			B[j+1] = A[j];
+		else if (b - a == 1)
+		{
+			/* code */
+			cout<<gcd(a,b)<<" 0"<<endl;
 		}
-		B[0] = x;
-		for(int j=0;j<n;j++){
-			cout<<B[j]<<" ";
+		else if (b == 0)
+		{
+			cout<<a<<" 0"<<endl;
 		}
-		cout<<endl;
+		else if (a == 0)
+		{
+			cout<<b<<" 0"<<endl;
+		}
+		
+		else if(a > 0 && b > 0){
+			int temp = gcd(a,b);
+			int count = 0;
+			int count2 = 0;
+			int x = a, y = b;
+			for(int i = 0;i<2;i++){
+				switch(i){
+					case 0: while(temp >= gcd(a,b)){
+						a = a+1;
+						b = b+1;
+						count ++;
+					}
+					case 1: while (temp == gcd(a,b))
+					{
+						x = x - 1;
+						y = y - 1;
+						count2++;
+					}
+				}
+			}
+			if(gcd(a,b) > gcd(x,y)){
+				cout<<gcd(a,b)<<" "<<count<<endl;
+			}
+			else{
+				cout<<gcd(x,y)<<" "<<count2<<endl;
+			}
+		}
 	}
 	return 0;
 }
