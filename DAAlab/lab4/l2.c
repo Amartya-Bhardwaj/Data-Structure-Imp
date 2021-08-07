@@ -26,22 +26,34 @@ void selectionSort(int A[], int n)
 int main()
 {
     int n;
+    int k = n;
     time_t strt, end;
     double t;
     scanf("%d", &n);
-    int A[n];
+    int Avg[n];
+    int Best[n];
+    int worst[n];
     for (int i = 0; i < n; i++)
     {
-        A[i] = rand();
+        Best[i] = i+1;
+        Avg[i] = rand();
+        worst[i] = k;
+        k--;
     }
     strt = clock();
-    selectionSort(A, n);
+    selectionSort(Avg, n);
     end = clock();
     t = end - strt;
-    printf("Time Complexity(Insertion sort) : %f\n", (t / CLOCKS_PER_SEC));
-    for (int i = 0; i < n; i++)
-    {
-        printf("%d ", A[i]);
-    }
+    printf("Time Complexity(Insertion sort) Avg : %f\n", (t / CLOCKS_PER_SEC));
+    strt = clock();
+    selectionSort(Best, n);
+    end = clock();
+    t = end - strt;
+    printf("Time Complexity(Insertion sort) Best : %f\n", (t / CLOCKS_PER_SEC));
+    strt = clock();
+    selectionSort(worst, n);
+    end = clock();
+    t = end - strt;
+    printf("Time Complexity(Insertion sort) worst : %f\n", (t / CLOCKS_PER_SEC));
     return 0;
 }

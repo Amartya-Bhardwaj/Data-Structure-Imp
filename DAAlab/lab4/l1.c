@@ -1,5 +1,4 @@
 #include <stdio.h>
-#include <stdlib.h>
 #include <time.h>
 
 void swap(int *xp, int *yp)
@@ -24,22 +23,34 @@ void Bubble_sort(int A[], int n)
 int main()
 {
     int n;
+    int k = n;
     time_t strt, end;
     double t;
     scanf("%d", &n);
-    int A[n];
+    int Avg[n];
+    int Best[n];
+    int worst[n];
     for (int i = 0; i < n; i++)
     {
-        A[i] = rand();
+        Best[i] = i+1;
+        Avg[i] = rand();
+        worst[i] = k;
+        k--;
     }
     strt = clock();
-    Bubble_sort(A, n);
+    Bubble_sort(Avg, n);
     end = clock();
     t = end - strt;
-    printf("Time Complexity(Bubble sort): %f\n", (t / CLOCKS_PER_SEC));
-    for (int i = 0; i < n; i++)
-    {
-        printf("%d ", A[i]);
-    }
+    printf("Time Complexity Avg: %f\n", (t / CLOCKS_PER_SEC));
+    strt = clock();
+    Bubble_sort(Best, n);
+    end = clock();
+    t = end - strt;
+    printf("Time Complexity Best: %f\n", (t / CLOCKS_PER_SEC));
+    strt = clock();
+    Bubble_sort(worst, n);
+    end = clock();w
+    t = end - strt;
+    printf("Time Complexity worst: %f\n", (t / CLOCKS_PER_SEC));
     return 0;
 }
