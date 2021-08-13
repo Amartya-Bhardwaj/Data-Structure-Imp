@@ -49,7 +49,7 @@ int main()
     printf("Time Complexity Best: %f\n", (t / CLOCKS_PER_SEC));
     strt = clock();
     Bubble_sort(worst, n);
-    end = clock();w
+    end = clock();
     t = end - strt;
     printf("Time Complexity worst: %f\n", (t / CLOCKS_PER_SEC));
     return 0;
