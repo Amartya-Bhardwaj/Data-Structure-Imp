@@ -47,27 +47,29 @@ int main()
     double t;
     int n;
     scanf("%d", &n);
-    int A[n];
+    int Best[n];
+    int Avg[n];
+    int worst[n];
     for (int i = 0; i < n; i++)
     {
-        A[i] = rand();
+        Best[i] = rand();
+        Avg[i] = 1;
+        worst[i] = i+1;
     }
-    printf("Array: ");
-     for (int i = 0; i < n; i++)
-    {
-        printf("%d ",A[i]);
-    }
-    printf("\n");
     strt = clock();
-    Quicksort(A,0,n);
+    Quicksort(Best,0,n);
     end = clock();
-    printf("Sorted array: ");
-    for (int i = 0; i < n; i++)
-    {
-        printf("%d ",A[i]);
-    }
-    printf("\n");
     t = end - strt;
-    printf("Time : %f",(t/CLOCKS_PER_SEC));
+    printf("Time Best : %f\n",(t/CLOCKS_PER_SEC));
+    strt = clock();
+    Quicksort(Avg,0,n);
+    end = clock();
+    t = end - strt;
+    printf("Time Avg : %f\n",(t/CLOCKS_PER_SEC));
+    strt = clock();
+    Quicksort(worst,0,n);
+    end = clock();
+    t = end - strt;
+    printf("Time Worst : %f\n",(t/CLOCKS_PER_SEC));
     return 0;
 }

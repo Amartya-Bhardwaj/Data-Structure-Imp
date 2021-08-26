@@ -1,5 +1,6 @@
 #include<stdio.h>
 #include<limits.h>
+#include<time.h>
 
 // int max = INT_MIN;
 // int min = INT_MAX;
@@ -38,17 +39,29 @@ void check(int A[],int l,int h){
     }
     else
         min = partMin(A,mid+1,h);
-    printf("Max : %d\n Min : %d",max,min);
+    printf("Max : %d\n Min : %d\n",max,min);
 }
 
 int main(){
     int n;
-   
+   time_t strt,end;
+    double t;
     scanf("%d",&n);
     int A[n];
+    int sort[n];
     for(int i=0;i<n;i++){
-        A[i] = i+1;
+        A[i] = rand();
+        sort[i] = i+1;
     }
+    strt = clock();
     check(A,0,n);
+    end = clock();
+    t = end - strt;
+    printf("time for random no: %f\n",(t/CLOCKS_PER_SEC));
+    strt = clock();
+    check(sort,0,n);
+    end = clock();
+    t = end - strt;
+    printf("time for sorted no: %f\n",(t/CLOCKS_PER_SEC));
     return 0;
 }
